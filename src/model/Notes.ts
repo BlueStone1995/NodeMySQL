@@ -6,27 +6,16 @@ export type NotesModel = {
     date: Date
 };
 
+// Connect to Mysql
+const con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: process.env.MYSQL_PASSWORD,
+    database: "notes_db"
+});
 
-const Notes = (sql: string) => {
+con.connect((err) => {
+    if (err) throw err;
+});
 
-    // Connect to Mysql
-    const con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: process.env.MYSQL_PASSWORD,
-        database: "notes_db"
-    });
-
-    con.connect((err) => {
-        if (err) throw err;
-
-        con.query(sql, (err, result) => {
-            if (err) throw err;
-
-            console.log(result);
-            return result;
-        });
-    });
-};
-
-export default Notes;
+export default con;

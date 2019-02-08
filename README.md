@@ -5,4 +5,4 @@
 
 Run `npm run dev`
 
-Open your browser in [Local Host](http://localhost:80).
+Open your browser in [Local Host](http://localhost:8080).
